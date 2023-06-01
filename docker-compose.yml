@@ -1,0 +1,15 @@
+version: '3.1'
+
+services:
+  db:
+    image: mysql:8.0.28
+    command: --max_allowed_packet=130023424
+    network_mode: host
+    container_name: mysql-local-8.0.28
+    env_file: ./docker-files/config/.env
+    volumes:
+      - dbdata:/var/lib/mysql
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+volumes:
+  dbdata:
